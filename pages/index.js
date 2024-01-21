@@ -97,10 +97,31 @@ export default function Home({ title }) {
   );
 }
 
-export function getServerSideProps() {
-  return {
-    props: {
-      title: "Hello everyone!",
-    },
-  };
+// export async function getServerSideProps() {
+//   console.log("getServerSideProps");
+//   return {
+//     props: {
+//       title: "Hello everyone!",
+//     },
+//   };
+// }
+export async function getServerSideProps() {
+  // const data = await import("../data.json");
+  try {
+    const res = await fetch("https://www.example.com/api/data");
+    const data = await res.json();
+    return {
+      props: {
+        ...data,
+        title: "Hello everyone!",
+      },
+    };
+  } catch (e) {
+    console.error("error occured", e);
+    return {
+      props: {
+        title: "Hello everyone!",
+      },
+    };
+  }
 }

@@ -15,12 +15,12 @@
 ## Server Side Rendering
 
 ```js
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import styles from '@/styles/Home.module.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ title }) {
   return (
@@ -116,9 +116,34 @@ export default function Home({ title }) {
 export function getServerSideProps() {
   return {
     props: {
-      title: "Hello everyone!",
+      title: 'Hello everyone!',
     },
   };
+}
+```
+
+### getServerSideProps
+
+```js
+export async function getServerSideProps() {
+  // const data = await import("../data.json");
+  try {
+    const res = await fetch('https://www.example.com/api/data');
+    const data = await res.json();
+    return {
+      props: {
+        ...data,
+        title: 'Hello everyone!',
+      },
+    };
+  } catch (e) {
+    console.error('error occured', e);
+    return {
+      props: {
+        title: 'Hello everyone!',
+      },
+    };
+  }
 }
 ```
 
@@ -130,3 +155,80 @@ export function getServerSideProps() {
 
 * Yes, in the context of Next.js, the object returned from getServerSideProps must have a props key. The props key should contain an object where each key-value pair represents a prop that will be passed to your page component.
 * The getServerSideProps function is specific to Next.js and is used for server-side rendering. It runs on the server for every request and can be used to fetch data that is required for rendering the page.
+
+## next.config.mjs
+
+```mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+};
+
+export default nextConfig;
+```
+
+### getStaticProps
+
+```js
+export async function getStaticProps() {
+  // const data = import('/data/data.json');
+  const { events_categories } = await import('../data/data.json');
+
+  return {
+    props: {
+      data: events_categories,
+    },
+  };
+}
+```
+
+### data map
+
+```js
+const Home = ({ data }) => {
+  return (
+    <div>
+      {data.map((ev) => (
+        <Link href={`/events/${ev.id}`}>
+          <img src={ev.image} alt={ev.title} />
+          <h1>{ev.title}</h1>
+          <p>{ev.description}</p>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default Home;
+```
+
+### getStaticPaths
+
+```js
+export async function getStaticProps(context) {
+  const id = context?.params.id;
+  const { allEvents } = await import('../data/data.json');
+  const data = allEvents.filter((ev) => ev.id === city);
+}
+export async function getStaticPaths() {
+  const { events_categories } = await import('../data/data.json');
+
+  const allPaths = events_categories.map((ev) => ({
+    params: { cat: ev.id.toString() },
+  }));
+
+  return {
+    paths: allPaths,
+    fallback: false,
+  };
+}
+```
+
+#### fallback
+
+- [fallback:false](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-false)
+- [fallback:true](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-true)
+- [fallback:blocking](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking)
