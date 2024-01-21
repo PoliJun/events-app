@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,16 +18,16 @@ export default function Home({ title }) {
 
       <header className={`${styles.header} ${inter.className}`}>
         <nav>
-          <img />
-          <a href="/">Home</a>
-          <a href="/events">Events</a>
-          <a href="/about-us">About Us</a>
+          <img alt="Logo" />
+          <Link href="/">Home</Link>
+          <Link href="/events">Events</Link>
+          <Link href="/about-us">About Us</Link>
         </nav>
       </header>
       <main className={`${styles.main} ${inter.className}`}>
         <div>
-          <a href="/events/London">
-            <img />
+          <Link href="/events/London">
+            <img alt="London Event" />
             <h1>Events in London</h1>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -44,9 +45,9 @@ export default function Home({ title }) {
               nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
               voluptas nulla pariatur?
             </p>
-          </a>
-          <a href="/events/Manchester">
-            <img />
+          </Link>
+          <Link href="/events/Manchester">
+            <img alt="Manchester Event" />
             <h1>Events in Manchester</h1>
             <p>
               But I must explain to you how all this mistaken idea of denouncing
@@ -66,9 +67,9 @@ export default function Home({ title }) {
               consequences, or one who avoids a pain that produces no resultant
               pleasure?
             </p>
-          </a>
-          <a href="/events/Liverpool">
-            <img />
+          </Link>
+          <Link href="/events/Liverpool">
+            <img alt="Liverpool Event" />
             <h1>Events in Liverpool</h1>
             <p>
               At vero eos et accusamus et iusto odio dignissimos ducimus qui
@@ -86,7 +87,7 @@ export default function Home({ title }) {
               voluptatibus maiores alias consequatur aut perferendis doloribus
               asperiores repellat.
             </p>
-          </a>
+          </Link>
         </div>
       </main>
       <footer className={styles.footer}>

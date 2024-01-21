@@ -35,14 +35,14 @@ export default function Home({ title }) {
       <header className={`${styles.header} ${inter.className}`}>
         <nav>
           <img />
-          <a href="/">Home</a>
-          <a href="/events">Events</a>
-          <a href="/about-us">About Us</a>
+          <Link href="/">Home</Link>
+          <Link href="/events">Events</Link>
+          <Link href="/about-us">About Us</Link>
         </nav>
       </header>
       <main className={`${styles.main} ${inter.className}`}>
         <div>
-          <a href="/events/London">
+          <Link href="/events/London">
             <img />
             <h1>Events in London</h1>
             <p>
@@ -61,8 +61,8 @@ export default function Home({ title }) {
               nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
               voluptas nulla pariatur?
             </p>
-          </a>
-          <a href="/events/Manchester">
+          </Link>
+          <Link href="/events/Manchester">
             <img />
             <h1>Events in Manchester</h1>
             <p>
@@ -83,8 +83,8 @@ export default function Home({ title }) {
               consequences, or one who avoids a pain that produces no resultant
               pleasure?
             </p>
-          </a>
-          <a href="/events/Liverpool">
+          </Link>
+          <Link href="/events/Liverpool">
             <img />
             <h1>Events in Liverpool</h1>
             <p>
@@ -103,7 +103,7 @@ export default function Home({ title }) {
               voluptatibus maiores alias consequatur aut perferendis doloribus
               asperiores repellat.
             </p>
-          </a>
+          </Link>
         </div>
       </main>
       <footer className={styles.footer}>
