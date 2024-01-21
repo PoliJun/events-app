@@ -1,16 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/link';
-const EventsPerCityPage = ({ title }) => {
+import Image from 'next/image';
+
+const EventsPerCityPage = ({ data }) => {
   return (
     <div>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <h1>Events in London</h1>
-      <Link href="/events/event1">Event1</Link>
-      <Link href="/events/event2">Event2</Link>
-      <Link href="/events/event3">Event3</Link>
-      <Link href="/events/event4">Event4</Link>
+      <h1>Events in </h1>
+      {data.map((ev) => (
+        <Link href={`/events/${ev.city}/id`} key={ev.id}>
+          <Image width={300} height={300} alt={ev.image} priority={false}/>
+          <h2>{ev.title}</h2> <p>{ev.description}</p>
+        </Link>
+      ))}
     </div>
   );
 };
@@ -26,11 +27,12 @@ export default EventsPerCityPage;
 
 export async function getStaticProps(context) {
   const id = context?.params.cat;
+  console.log(`myid:${id}`);
   const { allEvents } = await import('/data/data.json');
-  const data = allEvents.filter((ev) => ev.id === city);
+  const data = allEvents.filter((ev) => ev.city === id);
   console.log(data);
   return {
-    props: {},
+    props: { data },
   };
 }
 export async function getStaticPaths() {
@@ -39,6 +41,7 @@ export async function getStaticPaths() {
   const allPaths = events_categories.map((ev) => ({
     params: { cat: ev.id.toString() },
   }));
+    console.log(`allPaths:${allPaths}`);
 
   return {
     paths: allPaths,
