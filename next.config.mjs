@@ -2,14 +2,20 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns:[
+    remotePatterns: [
       {
+        protocol: 'https',
         hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
       },
       {
+        protocol: 'https',
         hostname: 'wembleypark.com',
-      }
-    ]
+        port: '',
+        pathname: '/**',
+      },
+    ],
     // domains: ['images.unsplash.com', 'wembleypark.com'],
   },
 };

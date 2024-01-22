@@ -18,17 +18,44 @@ export default function Home({ title, data }) {
 
       <header className={`${styles.header} ${inter.className}`}>
         <nav>
-          <img alt="Logo" />
-          <Link href="/">Home</Link>
-          <Link href="/events">Events</Link>
-          <Link href="/about-us">About Us</Link>
+          <Image
+            alt="Logo"
+            style={{ display: 'inline-block', marginLeft: '10px' }}
+          />
+          <Link
+            href="/"
+            passHref
+            style={{ display: 'inline-block', marginLeft: '10px' }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/events"
+            passHref
+            style={{ display: 'inline-block', marginLeft: '10px' }}
+          >
+            Events
+          </Link>
+          <Link
+            href="/about-us"
+            passHref
+            style={{ display: 'inline-block', marginLeft: '10px' }}
+          >
+            About Us
+          </Link>
         </nav>
       </header>
       <main className={`${styles.main} ${inter.className}`}>
         <div>
           {data.map((ec) => (
             <Link href={`/events/${ec.id}`} key={ec.id}>
-              <Image src={ec.image} width={300} height={300} alt={ec.id} priority={true}/>
+              <Image
+                src={ec.image}
+                width={300}
+                height={300}
+                alt={ec.id}
+                priority={true}
+              />
               <h2>{ec.title}</h2> <p>{ec.description}</p>
             </Link>
           ))}
