@@ -18,7 +18,6 @@ export default function Home({ title, data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       
       {/* <main className={`${styles.main} ${inter.className}`}>
         <div>
@@ -37,7 +36,6 @@ export default function Home({ title, data }) {
         </div>
       </main> */}
       <HomePage data={data} />
-      <Footer />
     </div>
   );
 }
