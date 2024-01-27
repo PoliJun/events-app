@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 import { HomePage } from '../src/components/home/home-page';
 import PropTypes from 'prop-types';
+import Footer from '@/src/components/footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -63,29 +64,13 @@ export default function Home({ title, data }) {
           ))}
         </div>
       </main> */}
-      <HomePage data={data}/>
-      <footer className={styles.footer}>
-        <p>© 2021 Events App</p>
-      </footer>
+      <HomePage data={data} />
+      <Footer />
     </div>
   );
 }
 
-Home.PropTypes = {
-  title: PropTypes.string,
-  data: PropTypes.array,
-};
-
-// export async function getServerSideProps() {
-//   console.log("getServerSideProps");
-//   return {
-//     props: {
-//       title: "Hello everyone!",
-//     },
-//   };
-// }
 export async function getServerSideProps() {
-  // const data = await import("../data.json");
   try {
     const { events_categories } = await import('/data/data.json');
     return {
@@ -103,3 +88,8 @@ export async function getServerSideProps() {
     };
   }
 }
+
+Home.propTypes = {
+  title: PropTypes.string,
+  data: PropTypes.array,
+};

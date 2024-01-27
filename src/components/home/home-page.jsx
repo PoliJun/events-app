@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 
 export const HomePage = ({ data }) => {
   return (
-    <main /* className={`${styles.main} ${inter.className}`} */>
+    <main>
       <div>
         {data?.map((ec) => (
           <Link href={`/events/${ec.id}`} key={ec.id}>
@@ -20,4 +21,8 @@ export const HomePage = ({ data }) => {
       </div>
     </main>
   );
+};
+
+HomePage.propTypes = {
+  data: PropTypes.array.isRequired,
 };
