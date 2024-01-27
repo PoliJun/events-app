@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
+import { HomePage } from '../src/components/home/home-page';
+import PropTypes from 'prop-types';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -45,7 +47,7 @@ export default function Home({ title, data }) {
           </Link>
         </nav>
       </header>
-      <main className={`${styles.main} ${inter.className}`}>
+      {/* <main className={`${styles.main} ${inter.className}`}>
         <div>
           {data.map((ec) => (
             <Link href={`/events/${ec.id}`} key={ec.id}>
@@ -60,13 +62,19 @@ export default function Home({ title, data }) {
             </Link>
           ))}
         </div>
-      </main>
+      </main> */}
+      <HomePage data={data}/>
       <footer className={styles.footer}>
         <p>© 2021 Events App</p>
       </footer>
     </div>
   );
 }
+
+Home.PropTypes = {
+  title: PropTypes.string,
+  data: PropTypes.array,
+};
 
 // export async function getServerSideProps() {
 //   console.log("getServerSideProps");
