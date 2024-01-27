@@ -21,3 +21,33 @@ header
       li
         font-weight: bold
         font-size: 300
+
+footer
+  background-color: #333
+  color: #fff
+  padding: 10px
+  text-align: center
+
+main
+  width: 100%
+  max-width: 1450px
+  margin: auto
+  padding: 100px 30px
+
+.home_body
+  display: flex
+  flex-direction: column
+  gap: 50px
+  .card
+    display: flex
+    flex-direction: row
+    gap: 30px
+    justify-content: center
+    align-content: center
+    align-items: center
+    &:nth-child(even)
+      direction: rtl
+    .content
+      width: 50%
+    .image
+      width: 50%

@@ -6,10 +6,13 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <main>{children}</main>
+
       <Footer />
     </>
   );
 };
 
 export default MainLayout;
+
+MainLayout.propTypes = { children: React.ReactNode };
