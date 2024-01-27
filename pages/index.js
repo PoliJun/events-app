@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
+
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 import { HomePage } from '../src/components/home/home-page';
 import PropTypes from 'prop-types';
 import Footer from '@/src/components/footer/Footer';
+import Header from '@/src/components/header/header';
 
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ title, data }) {
   return (
@@ -18,36 +18,8 @@ export default function Home({ title, data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header className={`${styles.header} ${inter.className}`}>
-        <nav>
-          <Image
-            alt="Logo"
-            style={{ display: 'inline-block', marginLeft: '10px' }}
-          />
-          <Link
-            href="/"
-            passHref
-            style={{ display: 'inline-block', marginLeft: '10px' }}
-          >
-            Home
-          </Link>
-          <Link
-            href="/events"
-            passHref
-            style={{ display: 'inline-block', marginLeft: '10px' }}
-          >
-            Events
-          </Link>
-          <Link
-            href="/about-us"
-            passHref
-            style={{ display: 'inline-block', marginLeft: '10px' }}
-          >
-            About Us
-          </Link>
-        </nav>
-      </header>
+      <Header />
+      
       {/* <main className={`${styles.main} ${inter.className}`}>
         <div>
           {data.map((ec) => (
