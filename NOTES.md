@@ -232,3 +232,5 @@ export async function getStaticPaths() {
 - [fallback:false](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-false)
 - [fallback:true](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-true)
 - [fallback:blocking](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking)
+
+## `_app.js` is the root app

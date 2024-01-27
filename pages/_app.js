@@ -1,5 +1,3 @@
-import Footer from '@/src/components/footer/Footer';
-import Header from '@/src/components/header/header';
 import MainLayout from '@/src/components/layout/main-layout';
 import '@/styles/globals.css';
 import PropTypes from 'prop-types';
