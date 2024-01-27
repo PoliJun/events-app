@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../header/header';
 import Footer from '../footer/Footer';
+import PropTypes from 'prop-types';
 
 const MainLayout = ({ children }) => {
   return (
     <>
       <Header />
       <main>{children}</main>
-
       <Footer />
     </>
   );
@@ -15,4 +15,4 @@ const MainLayout = ({ children }) => {
 
 export default MainLayout;
 
-MainLayout.propTypes = { children: React.ReactNode };
+MainLayout.propTypes = { children: PropTypes.node.isRequired };

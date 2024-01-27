@@ -4,12 +4,12 @@ import Image from 'next/image';
 const EventsPage = ({ data }) => {
   return (
     <div>
-        {console.log('Fetching data from getServerSideProps')}
-        {console.log('Fetching data from getServerSideProps')}
-        {console.log('Fetching data from getServerSideProps')}
-        {console.log('Fetching data from getServerSideProps')}
-        {console.log('Fetching data from getServerSideProps')}
-        {console.log('Fetching data from getServerSideProps')}
+      {console.log('Fetching data from getServerSideProps')}
+      {console.log('Fetching data from getServerSideProps')}
+      {console.log('Fetching data from getServerSideProps')}
+      {console.log('Fetching data from getServerSideProps')}
+      {console.log('Fetching data from getServerSideProps')}
+      {console.log('Fetching data from getServerSideProps')}
       <h1>Events Page</h1>
       {data.map((ec) => (
         <Link href={`/events/${ec.id}`} key={ec.id}>

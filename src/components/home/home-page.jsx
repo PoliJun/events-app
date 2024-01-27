@@ -6,12 +6,12 @@ export const HomePage = ({ data }) => {
   return (
     <div className="home_body">
       {data?.map((ec) => (
-        <Link className="card" href={`/events/${ec.id}`} key={ec.id}>
+        <Link className="card" href={`/events/${ec.id}`} key={ec.id} passHref>
           <div className="image">
             <Image
               src={ec.image}
-              width={600}
-              height={400}
+              width={300}
+              height={200}
               alt={ec.id}
               priority={true}
             />

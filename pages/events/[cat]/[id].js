@@ -5,7 +5,13 @@ const SingleEventPage = ({ data }) => {
   console.log(data);
   return (
     <div>
-      <Image src={data.image} width={1000} height={300} alt={data.title} />
+      <Image
+        src={data.image}
+        width={1000}
+        height={300}
+        alt={data.title}
+        priority={true}
+      />
       <h1>{data.title}</h1>
       <p>{data.description}</p>
       <p>{data.image}</p>

@@ -8,7 +8,13 @@ const EventsCatPage = ({ data, pageName }) => {
       <h1>Events in {pageName}</h1>
       {data.map((ev) => (
         <Link href={`/events/${ev.city}/${ev.id}`} key={ev.id} passHref>
-          <Image src={ev.image} width={300} height={300} alt={ev.image} priority={true}/>
+          <Image
+            src={ev.image}
+            width={300}
+            height={300}
+            alt={ev.image}
+            priority={true}
+          />
           <h2>{ev.title}</h2> <p>{ev.description}</p>
           <p>{ev.image}</p>
         </Link>
@@ -42,7 +48,7 @@ export async function getStaticPaths() {
   const allPaths = events_categories.map((ec) => ({
     params: { cat: ec.id.toString() },
   }));
-    console.log(`allPaths:${allPaths}`);
+  console.log(`allPaths:${allPaths}`);
 
   return {
     paths: allPaths,
