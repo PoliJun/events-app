@@ -1,35 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import PropTypes from 'prop-types';
+import { EventsPage } from '@/src/components/events/events-page';
 
-const EventsPage = ({ data }) => {
-  return (
-    <div>
-      {console.log('Fetching data from getServerSideProps')}
-      {console.log('Fetching data from getServerSideProps')}
-      {console.log('Fetching data from getServerSideProps')}
-      {console.log('Fetching data from getServerSideProps')}
-      {console.log('Fetching data from getServerSideProps')}
-      {console.log('Fetching data from getServerSideProps')}
-      <h1>Events Page</h1>
-      {data.map((ec) => (
-        <Link href={`/events/${ec.id}`} key={ec.id}>
-          <Image
-            src={ec.image}
-            width={300}
-            height={300}
-            alt={ec.id}
-            priority={true}
-          />
-          <h2>{ec.title}</h2> <p>{ec.description}</p>
-        </Link>
-      ))}
-    </div>
-  );
+const Page = ({ data }) => {
+  return <EventsPage data={data} />;
 };
-export default EventsPage;
+export default Page;
 
 export async function getServerSideProps() {
-  // const data = await import("../data.json");
   try {
     const { events_categories } = await import('/data/data.json');
     return {
@@ -47,3 +24,5 @@ export async function getServerSideProps() {
     };
   }
 }
+
+Page.propTypes = { data: PropTypes.array.isRequired };
