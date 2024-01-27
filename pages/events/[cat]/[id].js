@@ -4,13 +4,7 @@ const SingleEventPage = ({ data }) => {
   console.log(data);
   return (
     <div>
-      <Image
-        src={data.image}
-        width={1000}
-        height={300}
-        alt={data.title}
-        priority={true}
-      />
+      <Image src={data.image} width={1000} height={300} alt={data.title} />
       <h1>{data.title}</h1>
       <p>{data.description}</p>
       <p>{data.image}</p>
@@ -18,16 +12,17 @@ const SingleEventPage = ({ data }) => {
   );
 };
 
+SingleEventPage.propTypes = { data: PropTypes.object.isRequired };
+
 export default SingleEventPage;
 
 export async function getStaticProps(context) {
   console.log(context);
   const id = context?.params.id;
   const { allEvents } = await import('/data/data.json');
-  const eventsData = allEvents.find((ev) => ev.id === id);
-  console.log(eventsData);
+  const data = allEvents.find((ev) => ev.id === id);
   return {
-    props: { data: eventsData },
+    props: { data },
   };
 }
 
