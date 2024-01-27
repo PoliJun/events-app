@@ -1,13 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
-
-import styles from '@/styles/Home.module.css';
-import Link from 'next/link';
-import { HomePage } from '../src/components/home/home-page';
+import { HomePage } from '@/src/components/home/home-page';
 import PropTypes from 'prop-types';
-import Footer from '@/src/components/footer/Footer';
-import Header from '@/src/components/header/header';
-
 
 export default function Home({ title, data }) {
   return (
@@ -18,23 +11,7 @@ export default function Home({ title, data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      {/* <main className={`${styles.main} ${inter.className}`}>
-        <div>
-          {data.map((ec) => (
-            <Link href={`/events/${ec.id}`} key={ec.id}>
-              <Image
-                src={ec.image}
-                width={300}
-                height={300}
-                alt={ec.id}
-                priority={true}
-              />
-              <h2>{ec.title}</h2> <p>{ec.description}</p>
-            </Link>
-          ))}
-        </div>
-      </main> */}
+
       <HomePage data={data} />
     </div>
   );

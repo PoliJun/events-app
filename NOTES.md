@@ -234,3 +234,4 @@ export async function getStaticPaths() {
 - [fallback:blocking](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking)
 
 ## `_app.js` is the root app
+## sass
