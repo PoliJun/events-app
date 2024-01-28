@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import { EventsPage } from '@/src/components/events/events-page';
+import { AllEvents } from '@/src/components/events/events-page';
 
-const Page = ({ data }) => {
-  return <EventsPage data={data} />;
+const EventsPage = ({ data }) => {
+  return <AllEvents data={data} />;
 };
-export default Page;
+export default EventsPage;
 
 export async function getServerSideProps() {
   try {
@@ -25,4 +25,4 @@ export async function getServerSideProps() {
   }
 }
 
-Page.propTypes = { data: PropTypes.array.isRequired };
+EventsPage.propTypes = { data: PropTypes.array.isRequired };

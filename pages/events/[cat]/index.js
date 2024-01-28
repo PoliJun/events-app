@@ -1,40 +1,14 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
+import PropTypes from 'prop-types';
+import { CatEvent } from '@/src/components/events/catEvent';
 
-const EventsCatPage = ({ data, pageName }) => {
-  return (
-    <div>
-      <h1>Events in {pageName}</h1>
-      {data.map((ev) => (
-        <Link href={`/events/${ev.city}/${ev.id}`} key={ev.id} passHref>
-          <Image
-            src={ev.image}
-            width={300}
-            height={300}
-            alt={ev.image}
-            priority={true}
-          />
-          <h2>{ev.title}</h2> <p>{ev.description}</p>
-          <p>{ev.image}</p>
-        </Link>
-      ))}
-    </div>
-  );
-};
+const EventsCatPage = ({ data, pageName }) => (
+  <CatEvent data={data} pageName={pageName} />
+);
+
 export default EventsCatPage;
-
-// export function getServerSideProps() {
-//   return {
-//     props: {
-//       title: "Hello everyone!",
-//     },
-//   };
-// }
 
 export async function getStaticProps(context) {
   const id = context?.params.cat;
-  console.log(`myid:${id}`);
   const { allEvents } = await import('/data/data.json');
   const data = allEvents.filter((ev) => ev.city === id);
   console.log(data);
@@ -55,3 +29,8 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+EventsCatPage.propTypes = {
+  data: PropTypes.array,
+  pageName: PropTypes.string,
+};

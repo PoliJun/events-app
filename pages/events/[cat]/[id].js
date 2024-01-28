@@ -1,25 +1,10 @@
-import Image from 'next/image';
+import { SingleEvent } from '@/src/components/events/single-event';
 import PropTypes from 'prop-types';
 
 const SingleEventPage = ({ data }) => {
-  console.log(data);
-  return (
-    <div>
-      <Image
-        src={data.image}
-        width={1000}
-        height={300}
-        alt={data.title}
-        priority={true}
-      />
-      <h1>{data.title}</h1>
-      <p>{data.description}</p>
-      <p>{data.image}</p>
-    </div>
-  );
+  return <SingleEvent data={data} />;
 };
 
-SingleEventPage.propTypes = { data: PropTypes.object.isRequired };
 
 export default SingleEventPage;
 
@@ -48,3 +33,5 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+SingleEventPage.propTypes = { data: PropTypes.object.isRequired };

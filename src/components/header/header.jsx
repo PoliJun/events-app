@@ -40,7 +40,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <h1>Sed ut perspiciatis unde omnis</h1>
+      <h1 className='title'>Sed ut perspiciatis unde omnis</h1>
     </header>
   );
 };
