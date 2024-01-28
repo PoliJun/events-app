@@ -235,3 +235,4 @@ export async function getStaticPaths() {
 
 ## `_app.js` is the root app
 ## sass
+## API routes
